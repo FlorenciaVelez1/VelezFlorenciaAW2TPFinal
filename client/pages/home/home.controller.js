@@ -46,9 +46,13 @@ window.addEventListener('load', async () => {
     })
     } 
     productGrid.addEventListener('click', async (event) => {
-        if (event.target.classList.contains('addToCartButton')) {
+        if (event.target.classList.contains('addToCartButton') || event.target.id === 'cardBtn') {
             event.preventDefault()
-            const productName = event.target.getAttribute('data-nombre')
+            event.stopPropagation()
+
+            const productName = event.target.getAttribute('data-nombre') || 'Probando card'
+            console.log('Product Name:', productName)
+
             try {
                 const response = await fetch('http://localhost:8000/cart/agregar', {
                     method: 'POST',
@@ -57,7 +61,10 @@ window.addEventListener('load', async () => {
                     },
                     body: JSON.stringify({ nombre: productName })
                 })
+
                 const result = await response.json()
+                console.log('Result:', result)
+
                 if (response.ok) {
                     Toastify({
                         text: "¡Tu producto se cargó exitosamente!",
@@ -65,25 +72,37 @@ window.addEventListener('load', async () => {
                         destination: "",
                         newWindow: false,
                         close: true,
-                        gravity: "top",
-                        position: "left",
+                        gravity: "top", 
+                        position: "center", 
                         stopOnFocus: true,
                         style: {
                             background: "linear-gradient(to right, #A24FFF, #7E4DB4)",
+                            zIndex: 9999, 
+                            position: "fixed",
+                            top: "20px", 
+                            left: "50%", 
+                            transform: "translateX(-50%)" 
                         },
                         onClick: function () {}
                     }).showToast()
                 } else {
-                    throw new Error(result.mensaje)
+                    throw new Error(result.mensaje || 'Error desconocido')
                 }
             } catch (error) {
-                console.error('Error agregando producto al carrito:', error)
+                console.error('Error agregando producto al carrito:', error.message)
                 Toastify({
                     text: `Error: ${error.message}`,
                     duration: 3000,
-                    gravity: "top",
-                    position: "left",
+                    gravity: "top", 
+                    position: "center",
                     backgroundColor: "linear-gradient(to right, #ff5f6d, #ffc371)",
+                    style: {
+                        zIndex: 9999, 
+                        position: "fixed", 
+                        top: "20px",
+                        left: "50%", 
+                        transform: "translateX(-50%)" 
+                    },
                 }).showToast()
             }
         }

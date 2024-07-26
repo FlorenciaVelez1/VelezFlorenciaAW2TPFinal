@@ -20,7 +20,7 @@ export const findAll = async ()=>{
     }
 }
 
-export const addProductToCart = async (nombre) => {
+export const agregarProductoCarrito = async (nombre) => {
     const cantidad = 1
     let productoNombre = nombre.toString()
 
@@ -59,7 +59,7 @@ export const addProductToCart = async (nombre) => {
     }
 }
 
-export const deleteProductFromCart = async (nombre) => {
+export const eliminarProductoDelCarrito = async (nombre) => {
     const productoExiste = carritoData.findIndex(c => c.nombre === nombre)
 
     if (productoExiste === -1) {
@@ -77,7 +77,7 @@ export const deleteProductFromCart = async (nombre) => {
     }
 }
 
-export const reduceProductQuantity = async (nombre) => {
+export const reducirCantProducto = async (nombre) => {
     const productoExiste = carritoData.find(c => c.nombre === nombre.toString())
 
     if (!productoExiste) {
@@ -87,7 +87,6 @@ export const reduceProductQuantity = async (nombre) => {
     if (productoExiste.cantidad > 0) {
         productoExiste.cantidad -= 1
     }
-
     try {
         await writeFile(filePath, JSON.stringify(carritoData, null, 2))
         return carritoData

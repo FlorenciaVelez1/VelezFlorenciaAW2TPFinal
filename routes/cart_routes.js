@@ -1,6 +1,6 @@
 import { Router } from "express"
 
-import { findAll, addProductToCart, deleteProductFromCart, reduceProductQuantity } from '../db/actions/cart_actions.js'
+import { findAll, agregarProductoCarrito, eliminarProductoDelCarrito, reducirCantProducto } from '../db/actions/cart_actions.js'
 
 const router = Router()
 router.get('/all', async (req, res) => {
@@ -17,7 +17,7 @@ router.post('/agregar', async (req, res) => {
     const { nombre } = req.body
 
     try {
-        const carritoData = await addProductToCart(nombre)
+        const carritoData = await agregarProductoCarrito(nombre)
         res.status(200).json({ mensaje: 'Producto agregado al carrito', carrito: carritoData })
     } catch (error) {
         res.status(500).json({ mensaje: 'Error al agregar producto al carro', error: error.message })
@@ -28,7 +28,7 @@ router.delete('/eliminar/:nombre', async (req, res) => {
     const { nombre } = req.params
 
     try {
-        const carritoData = await deleteProductFromCart(nombre)
+        const carritoData = await eliminarProductoDelCarrito(nombre)
         res.status(200).json(carritoData)
     } catch (error) {
         res.status(500).json({ mensaje: 'Error al eliminar el producto del carro', error: error.message })
@@ -38,10 +38,11 @@ router.delete('/eliminar/:nombre', async (req, res) => {
 router.post('/eliminarProducto/:nombre', async (req, res) => {
     const { nombre } = req.params
     try {
-        const carritoData = await reduceProductQuantity(nombre)
-
-        if (carritoData.cantidad = 0) {
-            await deleteProductFromCart(nombre)
+        const carritoData = await reducirCantProducto(nombre)
+        const cantidad = parseInt(carritoData.cantidad, 10)
+        console.log('Cantidad:', cantidad)
+        if (cantidad === 0) {
+            await eliminarProductoDelCarrito(nombre)
             res.status(200).json({ mensaje: 'Producto eliminado del carrito' })
         } else {
             res.status(200).json({

@@ -1,1 +1,16 @@
-[]
+[
+  {
+    "id": "6685e400fb06c538d7da4a31",
+    "nombre": "Pantalón Under Armour Rival",
+    "imagen": "https://www.tienda.quonam.com.ar/media/catalog/product/cache/4f24db8df4bc61d14342add8d01704b4/1/0/1055-1356416-001-NEGRO_1.jpg",
+    "precio": 5800,
+    "cantidad": 1
+  },
+  {
+    "id": "6685e400fb06c538d7da4a2a",
+    "nombre": "Remera Nike Dri-FIT",
+    "imagen": "https://www.dexter.com.ar/on/demandware.static/-/Sites-365-dabra-catalog/default/dw922533bc/products/NI_CV2982-010/NI_CV2982-010-1.JPG",
+    "precio": 3500,
+    "cantidad": 4
+  }
+]
