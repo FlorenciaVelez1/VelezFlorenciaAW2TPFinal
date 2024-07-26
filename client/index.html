@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda de Ropa</title>
+</head>
+<body style="height: 100vh; display: flex; justify-content: center; align-items: center; background: linear-gradient(to bottom right, #f8edeb, #f4accf, #8d6c9f); font-family: 'Arial', sans-serif;">
+
+    <form id="logInForm" class="bg-gray-300 flex flex-col items-center justify-center rounded-md shadow-lg shadow-gray-900" style="max-width: 400px; padding: 20px;">
+        <div class="border-b border-gray-700 rounded-t flex w-full items-center justify-center pb-3" style="background-color: #db6bb4; width: 100%;">
+            <h3 class="rounded bg-purple-600 text-white px-4 py-2 font-bold hover:bg-purple-500 active:scale-95 transition-all" style="cursor: pointer; background-color: #db6bb4; color: #f0f4f9; border: none; border-radius: 5px; padding: 12px 20px; margin-top: 10px; transition: background-color 0.3s ease;">Login</h3>
+        </div>
+
+        <div class="flex flex-col space-y-5 m-5 mx-10" style="margin: 20px;">
+            <div class="space-y-2 flex flex-col" style="margin: 5px;">
+                <label for="email" class="text-purple-800" style="color: #6d6875;">Email</label>
+                <input type="text" placeholder="ejemplo@gmail.com" id="email" class="rounded-md p-2 text-purple-800 bg-white" required style="width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #a4b0f5; border-radius: 5px; background-color: #f0f4f9; color: #3d315b;">
+            </div>
+
+            <div class="space-y-2 flex flex-col" style="margin: 5px;">
+                <label for="pass" class="text-purple-800" style="color: #6d6875;">Contraseña</label>
+                <input type="password" placeholder="Contraseña" id="pass" class="rounded-md p-2 text-purple-800 bg-white" required style="width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #a4b0f5; border-radius: 5px; background-color: #f0f4f9; color: #3d315b;">
+            </div>
+
+            <a href="./pages/register/register.html" class="text-purple-800 text-right hover:underline" style="color: #6d6875; margin: 5px;">Registrarse</a>
+            <p id="error" class="text-red-500" style="color: #512b58; margin: 5px;"></p>
+            <input type="submit" value="Ingresar" class="rounded bg-blue-500 text-white px-4 py-2 font-bold hover:bg-blue-400 active:scale-95 transition-all" style="cursor: pointer; background-color: #db6bb4; color: #f0f4f9; border: none; border-radius: 5px; padding: 12px 20px; margin-top: 10px; transition: background-color 0.3s ease;">
+        </div>
+    </form>
+    <script type="module" src="./login.controller.js"></script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script> 
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <title>Tienda</title>
+</head>
+<body style="background: linear-gradient(to bottom right, #f8edeb, #f4accf, #8d6c9f)">
+    <header ></header>
+    <div class="flex items-center justify-center mt-20 bg-gray-700 shadow shadow-slate-950 rounded container mx-auto" style="background-color: #8d6c9f;">
+        <h3 class=" text-slate-300 text-xl md:text-2xl font-medium mt-3 pb-5 mr-3" >Tipo de producto</h3>
+        <div class="flex w-96 rounded bg-white">            
+            <input type="text" id="productSearch" placeholder="pantalon" class="w-full text-right border-none bg-transparent px-4 py-1 text-gray-900 outline-none focus:outline-none">
+            <button id="categoriaCmd" class="m-2 rounded bg-blue-400 text-blue-900 px-4 py-1 font-semibold hover:bg-blue-300 active:scale-95 transition-all duration-200">Buscar</button>
+        </div>
+    </div>
+
+    <div class="flex items-center justify-center min-h-screen container mx-auto">
+        <div id="productGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+            <div class="bg-gray-700 max-w-sm rounded overflow-hidden shadow-lg my-3 mx-2 ">
+                <div class="p-5 flex flex-col" style="background-color: #a3628d;">
+                    <div class="rounded-xl overflow-hidden">
+                        <img src="https://previews.123rf.com/images/sabuhinovruzov/sabuhinovruzov1705/sabuhinovruzov170501748/78783119-icono-de-vector-de-carrito-de-compras-blanco-y-negro-agregar-producto-a-la-ilustraci%C3%B3n-del-carrito.jpg" alt="">
+                    </div>
+                    <h5 class="text-2xl md:text-3xl font-medium mt-3">Probando card</h5>
+                    <p class="text-slate-200 text-lg mt-3 ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto deserunt culpa distinctio sint voluptatibus commodi tempora facilis autem laudantium ut nisi illo dolor sequi molestias incidunt perspiciatis, suscipit voluptates similique.</p>
+                    <span class="text-3xl font-bold text-gray-950 dark:text-white">$800</span>
+                    <button id="cardBtn" class="text-center bg-blue-400 text-blue-900 py-2 rounded-lg font-semibold mt-4 hover:bg-blue-300 active:scale-95 transition-all duration-200 ease-out"> Agregar a la lista</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script type="module" src="./home.controller.js"></script>
+    <script type="module" src="../../index.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+</body>
+</html>

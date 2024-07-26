@@ -1,0 +1,32 @@
+[
+  {
+    "id": "6685e400fb06c538d7da4a2a",
+    "nombre": "Remera Nike Dri-FIT",
+    "precio": 3500,
+    "cantidad": 3
+  },
+  {
+    "id": "6685e400fb06c538d7da4a2b",
+    "nombre": "Pantalón Adidas Essentials",
+    "precio": 5500,
+    "cantidad": 2
+  },
+  {
+    "id": "6685e400fb06c538d7da4a2e",
+    "nombre": "Pantalón Nike Sportswear Club",
+    "precio": 6000,
+    "cantidad": 6
+  },
+  {
+    "id": "6685e400fb06c538d7da4a2c",
+    "nombre": "Short Puma Running",
+    "precio": 3000,
+    "cantidad": 1
+  },
+  {
+    "id": "6685e400fb06c538d7da4a2d",
+    "nombre": "Remera Under Armour Tech",
+    "precio": 4000,
+    "cantidad": 2
+  }
+]
