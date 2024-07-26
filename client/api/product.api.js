@@ -1,20 +1,5 @@
 import { API } from "./api.js"
 
-export const newProduct = async(nombre, desc, precio, imagen)=>{
-    try {
-        const res = await fetch(`${API}/product/newProduct`,{
-            method: 'POST',
-            body: JSON.stringify({nombre, desc, precio, imagen}),
-            headers:{
-                'Content-Type': 'application/json'
-            }
-        })
-        return res
-
-    } catch (error) {
-        console.log(error)
-    }
-}
 export const allProduct = async()=>{
     try {
         const res = await fetch(`${API}/product/all`,{

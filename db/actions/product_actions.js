@@ -1,10 +1,10 @@
 import { connectToDatabase } from "../connection.js"
 import Product from "../schemas/product_schema.js"
 
-export const newProduct = async({nombre, desc, precio, imagen}) =>{
+export const newProduct = async({nombre, desc, precio, imagen,categoria}) =>{
     try {
         await connectToDatabase()
-        const res = await Product.create({nombre, desc, precio, imagen})  
+        const res = await Product.create({nombre, desc, precio, imagen, categoria})  
         console.log(res)      
         return JSON.parse(JSON.stringify(res))
     } catch (error) {
