@@ -37,17 +37,24 @@ export const decodeToken = async(token)=>{
         return {status:false}
     }
 }
-export const newUser = async(nombre, apellido, email, password)=>{
+
+export const newUser = async (nombre, apellido, email, password) => {
     try {
-        const res = await fetch(`${API}/user/registro`,{
+        const res = await fetch(`${API}/user/registro`, {
             method: 'POST',
-            body: JSON.stringify({nombre, apellido, email, password}),
-            headers:{
+            body: JSON.stringify({ nombre, apellido, email, password }),
+            headers: {
                 'Content-Type': 'application/json'
             }
-        })
-        return res
+        });
+        const data = await res.json();
+        if (res.ok) {
+            return data;
+        } else {
+            throw new Error(data.message || 'Error al registrar el usuario');
+        }
     } catch (error) {
-        console.log(error)
+        console.log('Error:', error);
+        return { status: false, message: error.message };
     }
-}
+};

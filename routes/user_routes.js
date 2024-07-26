@@ -18,25 +18,19 @@ router.get('/all', async(req,res)=>{
         res.status(400).json()
     }
 })
+
 router.post('/registro', async (req, res) => {
     const { nombre, apellido, email, password } = req.body
-    //Agrego este console para ver que estan ingresando los datos correctamente
     console.log('Datos recibidos:', { nombre, apellido, email, password })
     try {
-        const newUser = new User({
-            nombre,
-            apellido,
-            email,
-            password
-        })
-        console.log('Usuario nuevo:', newUser)
-        await newUser.save()
-        res.status(201).json({ message: 'Usuario registrado correctamente' })
+        const user = await newUser({ nombre, apellido, email, password, activo: true })
+        res.status(201).json({ message: 'Usuario registrado correctamente', user })
     } catch (error) {
         console.error('Error al registrar el usuario:', error)
         res.status(400).json({ message: 'Error al intentar registrar el nuevo usuario', error })
     }
 })
+
 
 router.post('/login', async (req, res) => {
     const { email, password } = req.body

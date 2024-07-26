@@ -7,7 +7,8 @@ export const newUser = async ({ nombre, apellido, email, password, activo }) => 
         const res = await User.create({ nombre, apellido, email, password, activo })
         return JSON.parse(JSON.stringify(res))
     } catch (error) {
-        console.log(error)
+        console.log('Database error:', error)
+        throw error
     }
 }
 export const findAll = async () => {
