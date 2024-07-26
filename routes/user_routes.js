@@ -40,28 +40,29 @@ router.post('/registro', async (req, res) => {
 
 router.post('/login', async (req, res) => {
     const { email, password } = req.body
-
     try {
-        const user = await User.findOne({ email })
+        const user = await userLogin(email)
         if (!user) {
             return res.status(401).json({ message: 'Email inválido' })
         }
-        // Comparar la contraseña proporcionada con la hash almacenado
-        const isPasswordValid = await bcrypt.compare(password, user.password)
-        if (!isPasswordValid && password !== user.password) {
+        if (!user.password) {
+            return res.status(500).json({ message: 'Error del servidor: el usuario no tiene una contraseña establecida' })
+        }
+        if (user.password != password) {
             return res.status(401).json({ message: 'Contraseña inválida' })
         }
-        // Verificar si el usuario está activo
         if (!user.activo) {
             return res.status(401).json({ message: 'Usuario inactivo' })
         }
-        // Retornar el usuario autenticado si todo está bien
+        // Devuelve el usuario autenticado si todo está bien
         res.status(200).json(user)
     } catch (error) {
         console.error('Error del servidor:', error)
         res.status(500).json({ message: 'Error interno del servidor' })
     }
 })
+
+
 router.post('/decodeToken',async (req,res)=>{
     const token = req.body.token
     

@@ -23,8 +23,12 @@ export const userLogin = async (email) => {
     try {
         await connectToDatabase()
         const res = await User.findOne({ email })
+        if (!res) {
+            return null
+        }
         return JSON.parse(JSON.stringify(res))
     } catch (error) {
-        console.log(error)
+        console.error('Database error:', error)
+        throw error
     }
 }

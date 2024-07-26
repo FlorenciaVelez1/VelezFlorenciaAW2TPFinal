@@ -1,20 +1,24 @@
 import { API } from "./api.js"
-export const logIn = async(email, pass) => {
+export const logIn = async(email, password) => {
     try {
-        console.log("Sending request to server with:", {email, pass})
+        console.log("Sending request to server with:", {email, password})
         const response = await fetch(`${API}/user/login`, {
             method: 'POST',
-            body: JSON.stringify({email, pass}),
+            body: JSON.stringify({email, password}),
             headers: {
                 'Content-Type': 'application/json'
             }
         })
         const data = await response.json()
         console.log("Received response from server:", data)
-        return data
+        // Devolver un objeto que incluya el estado y los datos
+        return {
+            status: response.status,
+            ...data
+        }
     } catch (error) {
         console.log("Error occurred:", error)
-        return {status: false}
+        return {status: false, message: "Error al conectar con el servidor"}
     }
 }
 export const decodeToken = async(token)=>{

@@ -7,15 +7,15 @@ formLogIn.addEventListener('submit', async (e) => {
     e.preventDefault()
 
     const email = document.getElementById("email").value
-    const pass = document.getElementById("pass").value
+    const password = document.getElementById("pass").value
     try {
-        const res = await logIn(email, pass)
-        if (res.status !== false) {        
+        const res = await logIn(email, password)
+        if (res.status === 200) {
             sessionStorage.setItem('email', JSON.stringify(email))
             window.location.href = "./pages/home/home.html"
             console.log("Usuario autenticado:", res)
         } else {
-            error.textContent = "Error al loguearse, intente nuevamente"
+            error.textContent = res.message || "Error al loguearse, intente nuevamente"
             console.error("Error en la autenticación:", res.message)
         }
     } catch (error) {
@@ -23,4 +23,3 @@ formLogIn.addEventListener('submit', async (e) => {
         console.error("Error en la solicitud:", error)
     }
 })
-
