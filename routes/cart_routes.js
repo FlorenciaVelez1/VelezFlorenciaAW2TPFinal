@@ -1,6 +1,6 @@
 import { Router } from "express"
 
-import { findAll, agregarProductoCarrito, eliminarProductoDelCarrito, reducirCantProducto } from '../db/actions/cart_actions.js'
+import { findAll, agregarProductoCarrito, eliminarProductoDelCarrito, reducirCantProducto, vaciarCarrito } from '../db/actions/cart_actions.js'
 
 const router = Router()
 router.get('/all', async (req, res) => {
@@ -54,4 +54,7 @@ router.post('/eliminarProducto/:nombre', async (req, res) => {
         res.status(500).json({ mensaje: 'Error al actualizar el carrito', error: error.message })
     }
 })
+
+router.post('/vaciar', vaciarCarrito)
+
 export default router

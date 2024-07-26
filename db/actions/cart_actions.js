@@ -95,3 +95,14 @@ export const reducirCantProducto = async (nombre) => {
         throw error
     }
 }
+export const vaciarCarrito = async () => {
+    try {
+        carritoData.length = 0
+
+        await writeFile(filePath, JSON.stringify(carritoData, null, 2))
+        return carritoData
+    } catch (error) {
+        console.error('Error al vaciar el carrito:', error)
+        throw error
+    }
+}

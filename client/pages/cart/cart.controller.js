@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     const totalAmountElem = document.getElementById('totalAmount')
   
     try {
-      const response = await fetch('http://localhost:8000/cart/all') // Cambia esta URL según tu configuración
+      const response = await fetch('http://localhost:8000/cart/all')
       const cartData = await response.json()
   
       let totalQuantity = 0
