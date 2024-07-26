@@ -78,7 +78,47 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
     })
 
-} catch (error) {
+  } catch (error) {
     console.error('Error cargando el carrito:', error)
-}
+  }
+  const btnLogout = document.getElementById('btnLogout')
+  const btnLogoutMobile = document.getElementById('btnLogoutMobile')
+
+  const handleLogout = async () => {
+    const result = await Swal.fire({
+        title: '¿Estás seguro?',
+        text: "Esto vaciará el carrito y cerrarás sesión.",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Sí, cerrar sesión',
+        cancelButtonText: 'No'
+    })
+
+    if (result.isConfirmed) {
+        try {
+              window.location.replace('http://127.0.0.1:5500/client/index.html')
+              const response = await fetch('http://localhost:8000/cart/vaciar', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+              })
+          } catch (error) {
+              Toastify({
+                text: `Error: ${error.message}`,
+                duration: 3000,
+                backgroundColor: "linear-gradient(to right, #ff5f6d, #ffc371)",
+              }).showToast()
+        }
+    }
+  }
+  if (btnLogout) {
+      btnLogout.addEventListener('click', handleLogout)
+    }
+
+  if (btnLogoutMobile) {
+      btnLogoutMobile.addEventListener('click', handleLogout)
+    }
 })

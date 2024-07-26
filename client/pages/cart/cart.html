@@ -2,6 +2,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   <title>Carrito de Compras</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <style>
@@ -57,19 +59,26 @@
           </button>
         </div>
         <div class="flex flex-1 items-center justify-end sm:items-stretch sm:justify-end">
-          <div class="hidden sm:ml-6 sm:block">
-            <div class="flex space-x-4">
-              <a href="http://127.0.0.1:5500/client/pages/home/home.html" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Lista de Productos</a>
-              <a href="http://127.0.0.1:5500/client/pages/cart/cart.html" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Carrito de Compras</a>
-            </div>
+          <div class="flex space-x-4">
+            <a href="http://127.0.0.1:5500/client/pages/home/home.html" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Lista de Productos</a>
+            <a href="http://127.0.0.1:5500/client/pages/cart/cart.html" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Carrito de compras</a>
+            <!-- Logout Button -->
+            <button id="btnLogout" type="button" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">
+              Cerrar Sesión
+            </button>
           </div>
+
         </div>
       </div>
     </div>
     <div class="sm:hidden" id="mobile-menu">
       <div id="menuNavbar" class="space-y-1 px-2 pb-3 pt-2 hidden">
         <a href="http://127.0.0.1:5500/client/pages/home/home.html" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Lista de Productos</a>
-        <a href="http://127.0.0.1:5500/client/pages/cart/cart.html" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Carrito de Compras</a>
+        <a href="http://127.0.0.1:5500/client/pages/cart/cart.html" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Carrito de compras</a>
+        <!-- Logout Button -->
+        <button id="btnLogoutMobile" type="button" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">
+          Cerrar Sesión
+        </button>
       </div>
     </div>
   </nav>
