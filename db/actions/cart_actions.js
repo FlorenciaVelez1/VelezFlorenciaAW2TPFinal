@@ -44,6 +44,7 @@ export const addProductToCart = async (nombre) => {
             const nuevoProducto = {
                 id: producto._id.toString(),
                 nombre: producto.nombre,
+                imagen: producto.imagen,
                 precio: producto.precio,
                 cantidad: parseInt(cantidad)
             }

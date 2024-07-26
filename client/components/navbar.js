@@ -1,4 +1,3 @@
-import { API } from "../api/api.js"
 
 export const navbarComponent = `
 <nav class="bg-gray-800 bg-opacity-80 shadow shadow-slate-950 fixed top-0 left-0 w-full z-50" style="background-color: #8d6c9f;">

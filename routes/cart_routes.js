@@ -35,11 +35,20 @@ router.delete('/eliminar/:nombre', async (req, res) => {
     }
 })
 
-router.delete('/eliminarProducto/:nombre', async (req, res) => {
+router.post('/eliminarProducto/:nombre', async (req, res) => {
     const { nombre } = req.params
     try {
         const carritoData = await reduceProductQuantity(nombre)
-        res.status(200).json({ mensaje: 'Cantidad reducida del producto en el carrito', carrito: carritoData })
+
+        if (carritoData.cantidad = 0) {
+            await deleteProductFromCart(nombre)
+            res.status(200).json({ mensaje: 'Producto eliminado del carrito' })
+        } else {
+            res.status(200).json({
+                mensaje: 'Cantidad reducida del producto en el carrito',
+                carrito: carritoData
+            })
+        }
     } catch (error) {
         res.status(500).json({ mensaje: 'Error al actualizar el carrito', error: error.message })
     }
